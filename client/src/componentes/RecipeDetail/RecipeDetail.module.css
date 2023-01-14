@@ -1,0 +1,101 @@
+#recipeDetail {
+  /* background-image: url("https://m.media-amazon.com/images/I/51mk2Y47DbL.jpg"); */
+  background-color: white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  background-attachment: fixed;
+  overflow: auto;
+}
+
+#divContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#detailCard {
+  color: rgb(229, 206, 236);
+  margin-top: 50px;
+  padding: 20px;
+  width: 800px;
+  max-width: 80%;
+  background-color: rgb(160, 87, 170);
+  border-radius: 5px;
+  border: solid rgb(231, 224, 224) 2px;
+  box-shadow: 0 0 4px #000000a8;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#detailCard img {
+  width: 400px;
+  max-width: 80%;
+}
+
+#span {
+  margin-left: 15px;
+}
+
+#button {
+  min-width: 130px;
+  height: 40px;
+  color: rgb(0, 0, 0);
+  padding: 3px 3px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255, 236, 236, 0.8);
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+#button:hover {
+  background-color: white;
+}
+
+#spanh4 {
+  color: rgb(67, 5, 73);
+}
+
+#loading {
+  display: flex;
+  margin-top: 10rem;
+  margin-left: 658px;
+  margin-bottom: 10em;
+}
+
+#dot {
+  width: 15px;
+  height: 15px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  animation: wavy 0.4s ease-in infinite alternate;
+}
+
+#dot:not(:last-child) {
+  margin-right: 10px;
+}
+
+@keyframes wavy {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+#dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#dot:not(:last-child) {
+  animation-delay: 0.4s;
+}

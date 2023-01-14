@@ -40,11 +40,12 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const objRecipe = req.body;
+  console.log(objRecipe);
   try {
     const postRecipe = await postNewRecipe(objRecipe);
     res.status(201).json(postRecipe);
   } catch (error) {
-    res.status(404).json("Error in route post Recipe", error);
+    res.status(404).json(`Error in route post Recipe ${error}`);
   }
 });
 

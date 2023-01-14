@@ -1,0 +1,104 @@
+#Home {
+  /* background-image: url("https://thumbs.dreamstime.com/b/fondo-de-la-comida-en-tabla-negra-118953109.jpg"); */
+  background-color: white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  background-attachment: fixed;
+  overflow: auto;
+}
+
+#div_h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 6em;
+  border-color: rgb(0, 0, 0);
+  border-radius: 5em;
+  background: rgba(248, 179, 100);
+  width: 19vw;
+  height: 10vh;
+  margin-left: 35em;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#h1 {
+  display: flex;
+  justify-content: center;
+  margin-left: 1em;
+  color: rgb(46, 46, 46);
+}
+
+/* Loading */
+#loading {
+  display: flex;
+  margin-top: 4rem;
+  background-color: white;
+}
+
+#imageLoading {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#img {
+  background-image: none;
+  border-radius: 4em;
+  display: inline-block;
+  margin-left: 1em;
+}
+
+#div_Select {
+  display: flex;
+  column-gap: 25px;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+#select_Home {
+  display: flex;
+  color: black;
+  height: 2em;
+  border-radius: 2em;
+  background-color: rgba(213, 165, 245, 0.603);
+  border: none;
+  font-size: 14px;
+  box-shadow: 0rem 0.1875rem 0.375rem rgb(68, 63, 53);
+}
+
+#select_Home:hover {
+  background-color: white;
+}
+
+#h5 {
+  margin-right: 35em;
+  color: black;
+}
+
+#buttonClear {
+  min-width: 120px;
+  border: none;
+  color: rgb(67, 9, 105);
+  height: 2em;
+  border-radius: 2em;
+  background-color: rgb(213, 165, 245);
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0rem 0.1875rem 0.375rem rgb(68, 63, 53);
+}
+
+#divCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

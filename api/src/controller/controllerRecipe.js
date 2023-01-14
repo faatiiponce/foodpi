@@ -14,7 +14,8 @@ const postNewRecipe = async (objRecipe) => {
       where: { name: diets },
     });
     const newRecipe = await Recipe.create(recipe);
-    newRecipe.addDiet(dietsTypes);
+    await newRecipe.addDiet(dietsTypes);
+    return newRecipe;
   } catch (error) {
     console.log("Error in postNewRecipe", error);
   }
