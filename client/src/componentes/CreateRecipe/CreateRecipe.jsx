@@ -16,7 +16,7 @@ export default function CreateRecipe() {
   const dispatch = useDispatch();
   const history = useHistory();
   let allRecipes = useSelector((state) => state.allRecipes);
-  const dietsTypes = useSelector((state) => state.diets);
+  //const dietsTypes = useSelector((state) => state.diets);
 
   const [errors, setErrors] = useState({});
 
@@ -72,7 +72,14 @@ export default function CreateRecipe() {
     );
   };
 
-  let validateUrl = /(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/;
+  const handleDelete = (element) => {
+    setInput({
+      ...input,
+      diets: input.diets.filter((diet) => diet !== element),
+    });
+  };
+
+  //let validateUrl = /(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/;
 
   function validate(input) {
     let errors = {};
@@ -86,8 +93,8 @@ export default function CreateRecipe() {
       )
     ) {
       errors.name = `La receta ${input.name} ya existe`;
-    } else if (input.summary.length < 40 || input.summary.trim() === "") {
-      errors.summary = "Ingresa un correcto summary";
+    } else if (input.summary.length < 0 || input.summary.trim() === "") {
+      errors.summary = "Ingresa un summary correcto ";
     } else if (
       input.healthScore === "" ||
       input.healthScore < 1 ||
@@ -96,7 +103,7 @@ export default function CreateRecipe() {
       errors.healthScore = "Ingresa healthScore";
     } else if (input.steps.length === 0) {
       errors.steps = "Ingresa los pasos correctos";
-    } else if (!input.image || !validateUrl.test(input.image)) {
+    } else if (!input.image) {
       errors.image = "No es un URL valido";
     } else if (input.diets.length === 0) {
       errors.diets = "Selecciona una o más dietas";
@@ -197,6 +204,24 @@ export default function CreateRecipe() {
             <label id={styles.label}>Dietas: </label>
             <select
               id={styles.selectForm}
+              name="selectDiet"
+              onChange={(e) => handleSelect(e)}
+            >
+              {/* {diets && diets.map((diet) => (
+                        <option value={diet.name}>{diet.name}</option>
+                    ))} */}
+              <option value="gluten free">Gluten Free</option>
+              <option value="ketogenic">Ketogenic</option>
+              <option value="lacto-vegetarian">Lacto-Vegetarian </option>
+              <option value="lacto ovo vegetarian">Ovo-Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="pescatarian">Pescatarian</option>
+              <option value="paleolithic">Paleolithic</option>
+              <option value="primal">Primal</option>
+              <option value="whole 30">Whole 30</option>
+            </select>
+            {/* <select
+              id={styles.selectForm}
               onChange={(e) => handleSelect(e)}
               defaultValue="default"
             >
@@ -209,14 +234,25 @@ export default function CreateRecipe() {
                   {d.name}
                 </option>
               ))}
-            </select>
+            </select> */}
             <div id={styles.divDiet}>
-              {input.diets.map((d) => (
+              {/* {input.diets.map((d) => (
                 <div key={d}>
                   <div>
                     <h4 id={styles.selectDiet}>{d}</h4>
                   </div>
                   <button id={styles.buttonDiet} value={d}>
+                    x
+                  </button>
+                </div>
+              ))} */}
+              {input.diets.map((diet) => (
+                <div>
+                  <p className="addChoseDiet">{diet}</p>
+                  <button
+                    className="buttonDelete"
+                    onClick={() => handleDelete(diet)}
+                  >
                     x
                   </button>
                 </div>

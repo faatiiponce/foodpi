@@ -83,7 +83,6 @@ export function getRecipeDetail(id) {
 }
 
 //FORM
-
 export function getDietsTypes() {
   return async function (dispatch) {
     try {

@@ -35,9 +35,6 @@ export default function Recipe({
             ))}
             <br />
             <br />
-            <Link to={`/updaterecipe/${id}`}>
-              <button id={styles.button1}>Modify</button>
-            </Link>
           </div>
         </Link>
       ) : (
