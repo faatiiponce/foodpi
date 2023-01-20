@@ -13,9 +13,10 @@ import {
 import Recipe from "../Recipe/Recipe";
 import Paginado from "../Paginado/Paginado";
 import styles from "../Home/Home.module.css";
-import NotFound from "../NotFound/NotFound";
+//import NotFound from "../NotFound/NotFound";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
+import NotFound from "../NotFound/NotFound";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -123,8 +124,8 @@ export default function Home() {
 
         <div>
           <div id={styles.divCard}>
-            {actualRecipes?.length < 1 ? (
-              <Loading />
+            {actualRecipes === `NOT FOUND` ? (
+              <NotFound />
             ) : actualRecipes?.length > 0 ? (
               actualRecipes?.map((recipe) => (
                 <Recipe
@@ -134,11 +135,14 @@ export default function Home() {
                   healthScore={recipe.healthScore}
                   diets={recipe.diets}
                   created={recipe.created}
+                  dishTypes={recipe.dishTypes}
                   key={recipe.id}
                 />
               ))
+            ) : actualRecipes?.length < 2 ? (
+              <Loading />
             ) : (
-              <NotFound />
+              ""
             )}
           </div>
         </div>

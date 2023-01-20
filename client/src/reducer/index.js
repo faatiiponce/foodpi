@@ -9,7 +9,6 @@ import {
   ORDER_BY_HEALTHSCORE,
   CLEAR_DETAIL,
   LOADING,
-  UPDATE_RECIPE,
   SET_PAGE,
   CLEAN_RECIPES,
 } from "../actions/index";
@@ -53,11 +52,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case POST_RECIPE:
-      return {
-        ...state,
-      };
-
-    case UPDATE_RECIPE:
       return {
         ...state,
       };

@@ -10,6 +10,7 @@ const getInfoRecipe = async () => {
     );
     const data = infoApi.data.results;
     const infoRecipe = data?.map((recipe) => {
+      // si hay información en infoApi, va a crear un nuevo arreglo con toda la receta.
       return {
         id: recipe.id,
         name: recipe.title,
@@ -17,7 +18,9 @@ const getInfoRecipe = async () => {
         healthScore: recipe.healthScore,
         diets: recipe.diets,
         image: recipe.image,
+        dishTypes: recipe.dishTypes,
         steps: recipe.analyzedInstructions[0]?.steps.map((ele) => {
+          // crea un nuevo array con los pasos
           return {
             number: ele.number,
             step: ele.step,
@@ -34,6 +37,7 @@ const getInfoRecipe = async () => {
 const getInfoRecipeDB = async () => {
   try {
     const dbInfo = await Recipe.findAll({
+      //Busca las recetas en la base de datos
       include: {
         model: Diet,
         attributes: ["name"],
@@ -43,8 +47,8 @@ const getInfoRecipeDB = async () => {
       },
     });
 
-    var dato = JSON.parse(JSON.stringify(dbInfo, null, 2));
-    dato.forEach((el) => (el.diets = el.diets.map((el) => el.name)));
+    var dato = JSON.parse(JSON.stringify(dbInfo, null, 2)); //convierte cualquier texto en JSON
+    dato.forEach((el) => (el.diets = el.diets.map((el) => el.name))); // con forEach se ejecuta la función en cada array que se crea de diets.
 
     return dato;
   } catch (error) {
@@ -53,6 +57,7 @@ const getInfoRecipeDB = async () => {
 };
 
 const getAllRecipes = async () => {
+  // Esta función se encarga de juntar la información de la página con la de base de datos.
   try {
     const infoApi = await getInfoRecipe();
     const dataDB = await getInfoRecipeDB();

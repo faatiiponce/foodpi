@@ -7,3 +7,4 @@ export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+// Acá se guarda el estado de toda nuestra aplicación

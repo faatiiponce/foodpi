@@ -10,7 +10,7 @@ export const ORDER_ALPHABETICAL = "ORDER_ALPHABETICAL";
 export const ORDER_BY_HEALTHSCORE = "ORDER_BY_HEALTHSCORE";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const LOADING = "LOADING";
-export const UPDATE_RECIPE = "UPDATE_RECIPE";
+
 export const SET_PAGE = "SET_PAGE";
 export const CLEAN_RECIPES = "CLEAN_RECIPES";
 
@@ -27,22 +27,6 @@ export function getRecipes() {
       return dispatch({
         type: GET_RECIPES,
         payload: allRecipes.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-
-//DB RECIPE
-
-export function updateRecipe(id, payload) {
-  return async function (dispatch) {
-    try {
-      const recipeId = await axios.put(`/recipes/${id}`, payload);
-      return dispatch({
-        type: UPDATE_RECIPE,
-        payload: recipeId.data.id,
       });
     } catch (error) {
       console.log(error);

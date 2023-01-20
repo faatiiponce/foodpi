@@ -7,8 +7,8 @@ module.exports = (sequelize) => {
     "recipe",
     {
       id: {
-        type: DataTypes.UUID,
-        allowNull: false,
+        type: DataTypes.UUID, // genera un numero al azar
+        allowNull: false, // valor requerido
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
@@ -33,13 +33,14 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       created: {
+        // informa si fue creada o no
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
       },
     },
     {
-      timestamps: false,
+      timestamps: false, // para evitar qque se creen las columnas de cuando se creo la receta/dieta
     }
   );
 };

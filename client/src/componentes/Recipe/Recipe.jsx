@@ -9,6 +9,7 @@ export default function Recipe({
   healthScore,
   diets,
   created,
+  dishTypes,
 }) {
   return (
     <div>
@@ -58,6 +59,14 @@ export default function Recipe({
                 {d.charAt(0).toUpperCase() + d.slice(1)}
               </p>
             ))}
+            <div>
+              <label id={styles.label2}>DishTypes: </label>
+              {dishTypes?.map((d) => (
+                <p id={styles.p} key={d}>
+                  {d.charAt(0).toUpperCase() + d.slice(1)}
+                </p>
+              ))}
+            </div>
           </div>
         </Link>
       )}

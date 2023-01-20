@@ -1,20 +1,22 @@
 const { Router } = require("express");
 const { getAllRecipes } = require("../controller/controllerDB");
 const { postNewRecipe } = require("../controller/controllerRecipe");
+const { Recipe } = require("../db");
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
-    let info = await getAllRecipes();
+    let info = await getAllRecipes(); // trae la info de controller, todas las recetas
 
     if (name) {
-      let recipeName = info.filter((r) =>
-        r.name.toLowerCase().includes(name.toLowerCase())
+      let recipeName = info.filter(
+        (r) => r.name.toLowerCase().includes(name.toLowerCase()) // quita las mayusculas tanto de la busqueda y de la receta para que no interfiera en la busqueda
       );
-      recipeName
+      recipeName.length
         ? res.status(200).send(recipeName)
-        : res.status(404).send("Recipe Not Found");
+        : res.status(201).send(`NOT FOUND`);
+      // todo lo anterior, buscaria si hay una receta con ese nombre
     } else {
       res.status(200).send(info);
     }
@@ -32,7 +34,7 @@ router.get("/:id", async (req, res) => {
       recipeById
         ? res.status(200).json(recipeById)
         : res.status(404).json("Not found recipe detail");
-    }
+    } // busca las recetas por el id
   } catch (error) {
     res.status(404).json("Error in route getId Recipe", error);
   }
@@ -47,6 +49,7 @@ router.post("/", async (req, res) => {
   } catch (error) {
     res.status(404).json(`Error in route post Recipe ${error}`);
   }
+  // realiza el post de la nueva receta
 });
 
 module.exports = router;

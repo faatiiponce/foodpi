@@ -3,10 +3,10 @@ import React from "react";
 export default function NotFound() {
   return (
     <div>
-      <h1>Not Found</h1>
+      <h1>Receta no encontrada</h1>
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkqRiM-Sza4cteGITqNCCJZKgi6-YzmQexbVmkmbKEVel1vVxknmfUBBqfEF7TJJLr98s&usqp=CAU"
-        alt="Recipe Not Found"
+        src="https://cutewallpaper.org/cdn-cgi/mirage/dd19f2d06ebc24f541f142b37b4289ffa7de722a7607e39984c5c6dd4ce8defd/1280/24/food-animated-gif/top-thai-food-cuisine-stickers-for-android-amp-ios-gfycat.gif"
+        alt="RecetaNoEncontrada"
       />
     </div>
   );
