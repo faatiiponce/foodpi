@@ -2,13 +2,15 @@ const { Recipe, Diet } = require("../db");
 
 const postNewRecipe = async (objRecipe) => {
   try {
-    const { name, summary, healthScore, steps, image, diets } = objRecipe;
+    const { name, summary, healthScore, steps, image, diets, dishTypes } =
+      objRecipe;
     const recipe = {
       name,
       summary,
       healthScore,
       steps,
       image,
+      dishTypes,
     };
     const dietsTypes = await Diet.findAll({
       //busca todas las dietas

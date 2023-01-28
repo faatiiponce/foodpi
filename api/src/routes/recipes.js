@@ -1,8 +1,17 @@
 const { Router } = require("express");
-const { getAllRecipes } = require("../controller/controllerDB");
+const { getAllRecipes, getNameRecipe } = require("../controller/controllerDB");
 const { postNewRecipe } = require("../controller/controllerRecipe");
 const { Recipe } = require("../db");
 const router = Router();
+
+// router.get("/name", async (req, res) => {
+//   try {
+//     const info = await getNameRecipe();
+//     res.status(201).send(info);
+//   } catch (error) {
+//     res.status(404).send("Error");
+//   }
+// });
 
 router.get("/", async (req, res) => {
   try {

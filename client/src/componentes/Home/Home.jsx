@@ -13,7 +13,6 @@ import {
 import Recipe from "../Recipe/Recipe";
 import Paginado from "../Paginado/Paginado";
 import styles from "../Home/Home.module.css";
-//import NotFound from "../NotFound/NotFound";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import NotFound from "../NotFound/NotFound";
@@ -71,50 +70,92 @@ export default function Home() {
       <NavBar></NavBar>
       <div>
         <div id={styles.div_Select}>
-          <select
-            id={styles.select_Home}
-            name="alphabetical"
-            onChange={(e) => handleOrderAlphabetical(e)}
-            defaultValue="default"
-          >
-            <option value="default" disabled>
-              Orden alfabético
-            </option>
-            <option value="atoz">A to Z</option>
-            <option value="ztoa">Z to A</option>
-          </select>
-          <select
-            id={styles.select_Home}
-            name="numerical"
-            onChange={(e) => handleHealthScore(e)}
-            defaultValue="default"
-          >
-            <option value="default" disabled>
-              Orden Health Score
-            </option>
-            <option value="asc">From Min to Max</option>
-            <option value="desc">From Max to Min</option>
-          </select>
-          <select
-            id={styles.select_Home}
-            name="diets"
-            onChange={(e) => handleFilterDietType(e)}
-            defaultValue="default"
-          >
-            <option value="default" disabled>
-              Selecciona dieta
-            </option>
-            <option value="gluten free">Gluten Free</option>
-            <option value="dairy free">Dairy Free</option>
-            <option value="ketogenic">Ketogenic</option>
-            <option value="lacto ovo vegetarian">Lacto-Ovo-Vegetarian</option>
-            <option value="vegan">Vegan</option>
-            <option value="pescatarian">Pescatarian</option>
-            <option value="paleolithic">Paleolithic</option>
-            <option value="primal">Primal</option>
-            <option value="fodmap friendly">Foodmap friendly</option>
-            <option value="whole 30">Whole30</option>
-          </select>
+          {actualRecipes === `NOT FOUND` ? (
+            <select
+              disabled
+              id={styles.select_Home}
+              name="alphabetical"
+              onChange={(e) => handleOrderAlphabetical(e)}
+              defaultValue="default"
+            >
+              <option value="default" disabled>
+                Orden alfabético
+              </option>
+            </select>
+          ) : (
+            <select
+              id={styles.select_Home}
+              name="alphabetical"
+              onChange={(e) => handleOrderAlphabetical(e)}
+              defaultValue="default"
+            >
+              <option value="default" disabled>
+                Orden alfabético
+              </option>
+              <option value="atoz">A to Z</option>
+              <option value="ztoa">Z to A</option>
+            </select>
+          )}
+          {actualRecipes === `NOT FOUND` ? (
+            <select
+              disabled
+              id={styles.select_Home}
+              name="numerical"
+              onChange={(e) => handleHealthScore(e)}
+              defaultValue="default"
+            >
+              <option value="default" disabled>
+                Orden Health Score
+              </option>
+            </select>
+          ) : (
+            <select
+              id={styles.select_Home}
+              name="numerical"
+              onChange={(e) => handleHealthScore(e)}
+              defaultValue="default"
+            >
+              <option value="default" disabled>
+                Orden Health Score
+              </option>
+              <option value="asc">From Min to Max</option>
+              <option value="desc">From Max to Min</option>
+            </select>
+          )}
+          {actualRecipes === `NOT FOUND` ? (
+            <select
+              disabled
+              id={styles.select_Home}
+              name="numerical"
+              onChange={(e) => handleHealthScore(e)}
+              defaultValue="default"
+            >
+              <option value="default" disabled>
+                Orden Health Score
+              </option>
+            </select>
+          ) : (
+            <select
+              id={styles.select_Home}
+              name="diets"
+              onChange={(e) => handleFilterDietType(e)}
+              defaultValue="default"
+            >
+              <option value="default" disabled>
+                Selecciona dieta
+              </option>
+              <option value="gluten free">Gluten Free</option>
+              <option value="dairy free">Dairy Free</option>
+              <option value="ketogenic">Ketogenic</option>
+              <option value="lacto ovo vegetarian">Lacto-Ovo-Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="pescatarian">Pescatarian</option>
+              <option value="paleolithic">Paleolithic</option>
+              <option value="primal">Primal</option>
+              <option value="fodmap friendly">Foodmap friendly</option>
+              <option value="whole 30">Whole30</option>
+            </select>
+          )}
           <button id={styles.buttonClear} onClick={handleClick}>
             Refresh
           </button>

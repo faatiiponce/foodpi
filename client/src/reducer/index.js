@@ -1,3 +1,4 @@
+//Realiza las modificaciones del estado.
 import {
   GET_RECIPES,
   GET_RECIPE_BY_NAME,

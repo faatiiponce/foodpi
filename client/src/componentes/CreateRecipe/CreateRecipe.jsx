@@ -16,7 +16,7 @@ export default function CreateRecipe() {
   const dispatch = useDispatch();
   const history = useHistory();
   let allRecipes = useSelector((state) => state.allRecipes);
-  // const dietsTypes = useSelector((state) => state.diets);
+  const dietsTypes = useSelector((state) => state.diets);
 
   const [errors, setErrors] = useState({});
 
@@ -25,8 +25,10 @@ export default function CreateRecipe() {
     summary: "",
     healthScore: "1",
     steps: [],
-    image: "https://webknox.com/recipeImages/1747683-556x370.jpg",
+    image:
+      "https://images.squarespace-cdn.com/content/v1/53b839afe4b07ea978436183/1608506169128-S6KYNEV61LEP5MS1UIH4/traditional-food-around-the-world-Travlinmad.jpg",
     diets: [],
+    dishTypes: "",
   });
 
   useEffect(() => {
@@ -109,7 +111,12 @@ export default function CreateRecipe() {
     } else if (!input.image || !validateUrl.test(input.image)) {
       errors.image = "No es un URL valido";
     } else if (input.diets.length < 1) {
-      errors.diets = "Selecciona una o más dietas";
+      errors.diets = "Selecciona más dietas";
+    } else if (
+      !input.dishTypes.length ||
+      !/^([a-zA-ZñÑáéíóúÁÉÍÓÚ ])+$/i.test(input.dishTypes)
+    ) {
+      errors.dishTypes = "Ingrese un dishTypes correcto";
     }
     return errors;
   }
@@ -130,6 +137,7 @@ export default function CreateRecipe() {
         steps: [],
         image: "",
         diets: [],
+        dishTypes: "",
       });
       history.push("/home");
       dispatch(cleanRecipes());
@@ -207,19 +215,17 @@ export default function CreateRecipe() {
             <label id={styles.label}>Diets: </label>
             <select
               id={styles.selectForm}
-              name="selectDiet"
               onChange={(e) => handleSelect(e)}
+              defaultValue="default"
             >
-              <option disabled>Todas las die...</option>
-              <option value="Gluten free">Gluten Free</option>
-              <option value="Ketogenic">Ketogenic</option>
-              <option value="Lacto-vegetarian">Lacto-Vegetarian </option>
-              <option value="Lacto ovo vegetarian">Ovo-Vegetarian</option>
-              <option value="Vegan">Vegan</option>
-              <option value="Pescatarian">Pescatarian</option>
-              <option value="Paleolithic">Paleolithic</option>
-              <option value="Primal">Primal</option>
-              <option value="Whole 30">Whole 30</option>
+              <option disabled value="default">
+                Todas las diet...
+              </option>
+              {dietsTypes?.map((name) => (
+                <option value={name} key={name}>
+                  {name}
+                </option>
+              ))}
             </select>
 
             <div id={styles.divDiet}>
@@ -238,6 +244,17 @@ export default function CreateRecipe() {
               ))}
             </div>
             {errors.diets && <h4 id={styles.error}>{errors.diets}</h4>}
+          </div>
+          <div>
+            <label id={styles.label}>DishTypes: </label>
+            <textarea
+              id={styles.input}
+              type="text"
+              value={input.dishTypes}
+              name="dishTypes"
+              onChange={(e) => handleChange(e)}
+            ></textarea>
+            {errors.dishTypes && <h4 id={styles.error}>{errors.dishTypes}</h4>}
           </div>
           <button id={styles.buttonForm} type="submit">
             Crea la receta

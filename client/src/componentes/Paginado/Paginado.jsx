@@ -12,17 +12,6 @@ export default function Paginado() {
   const pageNumbers = [];
   const allRecipes = recipes?.length;
 
-  // const handlePaginado = (event, number) => {
-  //   event.preventDefault()
-  //   dispatch(setCurrentPage(number))
-  // }
-
-  // const handlePaginado = (event, number) => {
-  //   event.preventDefault()
-  //   dispatch(setCurrentPage(number))
-  //   setActualPage(number)
-  // }
-
   const handlePaginado = (e) => {
     dispatch(setPage(parseInt(e.target.innerHTML)));
   };

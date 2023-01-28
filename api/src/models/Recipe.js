@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      dishTypes: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       created: {
         // informa si fue creada o no
         type: DataTypes.BOOLEAN,
